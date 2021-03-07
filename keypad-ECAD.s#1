@@ -78,8 +78,13 @@
 <layer number="111" name="LPC17xx" color="7" fill="1" visible="no" active="yes"/>
 <layer number="112" name="tSilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="113" name="IDFDebug" color="4" fill="1" visible="no" active="yes"/>
+<layer number="114" name="Unresolved" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="115" name="Resolved" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="116" name="Patch_BOT" color="9" fill="4" visible="no" active="yes"/>
+<layer number="117" name="BACKMAAT1" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="118" name="Rect_Pads" color="7" fill="1" visible="no" active="yes"/>
+<layer number="119" name="KAP_TEKEN" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="120" name="KAP_MAAT1" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="121" name="_tsilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="122" name="_bsilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="123" name="tTestmark" color="7" fill="1" visible="no" active="yes"/>
@@ -89,15 +94,31 @@
 <layer number="127" name="_tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="128" name="_bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="129" name="Mask" color="7" fill="1" visible="no" active="yes"/>
+<layer number="130" name="SMDSTROOK" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="no" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="no" active="yes"/>
+<layer number="133" name="bottom_silk" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="134" name="silk_top" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="135" name="silk_bottom" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="136" name="silktop" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="137" name="silkbottom" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="144" name="Drill_legend" color="7" fill="1" visible="no" active="yes"/>
+<layer number="145" name="DrillLegend_01-16" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="146" name="DrillLegend_01-20" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="150" name="Notes" color="7" fill="1" visible="no" active="yes"/>
 <layer number="151" name="HeatSink" color="7" fill="1" visible="no" active="yes"/>
 <layer number="152" name="_bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="153" name="FabDoc1" color="7" fill="1" visible="no" active="yes"/>
 <layer number="154" name="FabDoc2" color="7" fill="1" visible="no" active="yes"/>
 <layer number="155" name="FabDoc3" color="7" fill="1" visible="no" active="yes"/>
+<layer number="160" name="tMountFaceplate" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="161" name="bMountFaceplate" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="162" name="tCopperArt" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="163" name="bCopperArt" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="164" name="tRubout" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="165" name="bRubout" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="167" name="Fiducials" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="169" name="internal" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="199" name="Contour" color="7" fill="1" visible="no" active="yes"/>
 <layer number="200" name="200bmp" color="1" fill="10" visible="no" active="yes"/>
 <layer number="201" name="201bmp" color="2" fill="10" visible="no" active="yes"/>
@@ -131,6 +152,8 @@
 <layer number="229" name="229bmp" color="7" fill="1" visible="no" active="yes"/>
 <layer number="230" name="230bmp" color="7" fill="1" visible="no" active="yes"/>
 <layer number="231" name="231bmp" color="7" fill="1" visible="no" active="yes"/>
+<layer number="232" name="Eagle3D_PG2" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="233" name="Eagle3D_PG3" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="248" name="Housing" color="7" fill="1" visible="no" active="yes"/>
 <layer number="249" name="Edge" color="7" fill="1" visible="no" active="yes"/>
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
@@ -775,6 +798,96 @@ Datasheet</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="SerLCD">
+<packages>
+<package name="SPARKFUN_SERLCD_16X2">
+<text x="-30.558" y="18.517" size="1.27" layer="25" font="vector">&gt;NAME</text>
+<circle x="-37.5" y="15.5" radius="2.65" width="0.127" layer="39"/>
+<wire x1="-40" y1="18" x2="-40" y2="-18" width="0.127" layer="51"/>
+<wire x1="-40" y1="-18" x2="40" y2="-18" width="0.127" layer="51"/>
+<wire x1="40" y1="-18" x2="40" y2="18" width="0.127" layer="51"/>
+<wire x1="40" y1="18" x2="-40" y2="18" width="0.127" layer="51"/>
+<hole x="-37.5" y="15.5" drill="2.2"/>
+<hole x="37.5" y="15.5" drill="2.2"/>
+<hole x="37.5" y="-15.5" drill="2.2"/>
+<hole x="-37.5" y="-15.5" drill="2.2"/>
+<pad name="RST" x="25" y="16" drill="1.02"/>
+<pad name="RX" x="19.5" y="16" drill="1.02"/>
+<pad name="GND" x="17.5" y="16" drill="1.02"/>
+<pad name="+2" x="15.5" y="16" drill="1.02"/>
+<pad name="GND2" x="8" y="16" drill="1.02"/>
+<pad name="RAW" x="5.46" y="16" drill="1.02"/>
+<pad name="DA" x="2.92" y="16" drill="1.02"/>
+<pad name="CL" x="0.38" y="16" drill="1.02"/>
+<pad name="TX0" x="-2.16" y="16" drill="1.02"/>
+<pad name="RX1" x="-4.7" y="16" drill="1.02"/>
+<pad name="/CS" x="-7.24" y="16" drill="1.02"/>
+<pad name="SDI" x="-9.78" y="16" drill="1.02"/>
+<pad name="SDO" x="-12.32" y="16" drill="1.02"/>
+<pad name="SCK" x="-14.86" y="16" drill="1.02"/>
+<pad name="R" x="-17.4" y="16" drill="1.02"/>
+<pad name="TX2" x="-19.94" y="16" drill="1.02"/>
+<pad name="RX2" x="-22.48" y="16" drill="1.02"/>
+<pad name="+1" x="-25.02" y="16" drill="1.02"/>
+<pad name="GND3" x="-27.56" y="16" drill="1.02"/>
+<pad name="GND4" x="-30.1" y="16" drill="1.02"/>
+<circle x="37.5" y="15.5" radius="2.65" width="0.127" layer="39"/>
+<circle x="37.5" y="-15.5" radius="2.65" width="0.127" layer="39"/>
+<circle x="-37.5" y="-15.5" radius="2.65" width="0.127" layer="39"/>
+</package>
+</packages>
+<symbols>
+<symbol name="SPARKFUN_SERLCD_SERIAL">
+<pin name="GND" x="15.24" y="2.54" length="middle" rot="R180"/>
+<pin name="RAW" x="15.24" y="5.08" length="middle" rot="R180"/>
+<pin name="SDA" x="15.24" y="35.56" length="middle" rot="R180"/>
+<pin name="SCL" x="15.24" y="33.02" length="middle" rot="R180"/>
+<pin name="RX" x="15.24" y="27.94" length="middle" rot="R180"/>
+<pin name="TX" x="15.24" y="25.4" length="middle" rot="R180"/>
+<pin name="SCK" x="15.24" y="20.32" length="middle" rot="R180"/>
+<pin name="SDO" x="15.24" y="17.78" length="middle" rot="R180"/>
+<pin name="SDI" x="15.24" y="15.24" length="middle" rot="R180"/>
+<pin name="/CS" x="15.24" y="12.7" length="middle" rot="R180"/>
+<wire x1="10.16" y1="38.1" x2="10.16" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-10.16" x2="0" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="0" y1="-10.16" x2="0" y2="38.1" width="0.254" layer="94"/>
+<wire x1="0" y1="38.1" x2="10.16" y2="38.1" width="0.254" layer="94"/>
+<text x="1.27" y="-8.89" size="1.27" layer="95">&gt;NAME</text>
+<pin name="+" x="15.24" y="7.62" length="middle" rot="R180"/>
+<pin name="RST" x="15.24" y="-2.54" length="middle" rot="R180"/>
+<pin name="R" x="15.24" y="-5.08" length="middle" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SPARKFUN_SERLCD_SERIAL">
+<gates>
+<gate name="G$1" symbol="SPARKFUN_SERLCD_SERIAL" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SPARKFUN_SERLCD_16X2">
+<connects>
+<connect gate="G$1" pin="+" pad="+1 +2"/>
+<connect gate="G$1" pin="/CS" pad="/CS"/>
+<connect gate="G$1" pin="GND" pad="GND GND2 GND3 GND4"/>
+<connect gate="G$1" pin="R" pad="R"/>
+<connect gate="G$1" pin="RAW" pad="RAW"/>
+<connect gate="G$1" pin="RST" pad="RST"/>
+<connect gate="G$1" pin="RX" pad="RX RX1 RX2"/>
+<connect gate="G$1" pin="SCK" pad="SCK"/>
+<connect gate="G$1" pin="SCL" pad="CL"/>
+<connect gate="G$1" pin="SDA" pad="DA"/>
+<connect gate="G$1" pin="SDI" pad="SDI"/>
+<connect gate="G$1" pin="SDO" pad="SDO"/>
+<connect gate="G$1" pin="TX" pad="TX0 TX2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -797,6 +910,7 @@ Datasheet</description>
 <part name="S9" library="SparkFun-Switches" library_urn="urn:adsk.eagle:library:535" deviceset="MOMENTARY-SWITCH-SPST-LED" device="-PTH-CHERRY" package3d_urn="urn:adsk.eagle:package:40173/1"/>
 <part name="S10" library="SparkFun-Switches" library_urn="urn:adsk.eagle:library:535" deviceset="MOMENTARY-SWITCH-SPST-LED" device="-PTH-CHERRY" package3d_urn="urn:adsk.eagle:package:40173/1"/>
 <part name="U$1" library="RP_Pico-pinout-throughole" deviceset="RP-PICO" device=""/>
+<part name="U$2" library="SerLCD" deviceset="SPARKFUN_SERLCD_SERIAL" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -850,6 +964,9 @@ Datasheet</description>
 <attribute name="VALUE" x="66.04" y="172.466" size="1.778" layer="96" font="vector" align="top-center"/>
 </instance>
 <instance part="U$1" gate="G$1" x="142.24" y="63.5" smashed="yes"/>
+<instance part="U$2" gate="G$1" x="121.92" y="144.78" smashed="yes">
+<attribute name="NAME" x="123.19" y="135.89" size="1.27" layer="95"/>
+</instance>
 </instances>
 <busses>
 </busses>
