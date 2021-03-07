@@ -1,0 +1,47 @@
+"""CircuitPython Keyboard test"""
+import time
+import digitalio
+import board
+
+import usb_hid
+from adafruit_hid.keyboard import Keyboard
+from adafruit_hid.keycode import Keycode
+from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
+
+#from machine import ADC, Pina
+import analogio
+
+#adc = analogio.AnalogIn(board.GP26)
+
+def get_voltage(pin):
+    #return (pin.value * 3.3) / 65536
+    return (pin.value)/100
+
+Keyboard = Keyboard(usb_hid.devices)
+Layout = KeyboardLayoutUS(Keyboard)
+
+btn1_pin = board.GP14
+
+btn1 = digitalio.DigitalInOut(btn1_pin)
+btn1.direction = digitalio.Direction.INPUT
+btn1.pull = digitalio.Pull.DOWN
+
+btn2_pin = board.GP15
+
+btn2 = digitalio.DigitalInOut(btn2_pin)
+btn2.direction = digitalio.Direction.INPUT
+btn2.pull = digitalio.Pull.DOWN
+
+while True:
+    if btn1.value:
+        print("button 1 pressed")
+        Keyboard.press(Keycode.A)
+        time.sleep(0.1)
+        Keyboard.release(Keycode.A)
+    if btn2.value:
+        print("button 2 pressed")
+        #print((get_voltage(adc)),)
+        Keyboard.press(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, Keycode.KEYPAD_SIX)
+        time.sleep(0.1)
+        Keyboard.release(Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, Keycode.KEYPAD_SIX, Keycode.ALT)
+    time.sleep(0.1)
