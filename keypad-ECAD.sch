@@ -1130,8 +1130,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <instance part="GND17" gate="1" x="114.554" y="106.68" smashed="yes">
 <attribute name="VALUE" x="114.554" y="106.426" size="1.778" layer="96" align="top-center"/>
 </instance>
-<instance part="GND18" gate="1" x="116.84" y="124.46" smashed="yes">
-<attribute name="VALUE" x="116.84" y="124.206" size="1.778" layer="96" align="top-center"/>
+<instance part="GND18" gate="1" x="116.84" y="121.92" smashed="yes">
+<attribute name="VALUE" x="116.84" y="121.666" size="1.778" layer="96" align="top-center"/>
 </instance>
 <instance part="U$2" gate="G$1" x="132.08" y="162.56" smashed="yes"/>
 <instance part="GND19" gate="1" x="127" y="165.1" smashed="yes">
@@ -1210,7 +1210,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <segment>
 <pinref part="U$1" gate="G$1" pin="GND1"/>
 <pinref part="GND18" gate="1" pin="GND"/>
-<wire x1="124.46" y1="121.92" x2="116.84" y2="127" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="121.92" x2="116.84" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="GND2"/>
@@ -1373,6 +1373,15 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="U$1" gate="G$1" pin="PIN2"/>
 <wire x1="111.76" y1="165.1" x2="111.76" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="119.38" x2="124.46" y2="119.38" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
+<pinref part="S10" gate="G$1" pin="2"/>
+<wire x1="73.66" y1="180.34" x2="121.92" y2="180.34" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="180.34" x2="121.92" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="U$1" gate="G$1" pin="PIN1"/>
+<wire x1="121.92" y1="124.46" x2="124.46" y2="124.46" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
