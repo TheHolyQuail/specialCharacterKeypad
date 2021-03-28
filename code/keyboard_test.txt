@@ -53,4 +53,3 @@ while True:
         time.sleep(0.1)
         Keyboard.release(Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, Keycode.KEYPAD_SIX, Keycode.ALT)
     time.sleep(0.1)
-

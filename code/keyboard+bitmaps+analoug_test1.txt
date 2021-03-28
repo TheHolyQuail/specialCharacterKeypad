@@ -1,0 +1,164 @@
+# libraries for display and pin control
+import os
+import time
+import busio
+import board
+import displayio
+import terminalio
+import adafruit_displayio_ssd1306
+import adafruit_imageload
+
+# libraries for USB HID
+import digitalio
+import usb_hid
+from adafruit_hid.keyboard import Keyboard
+from adafruit_hid.keycode import Keycode
+from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
+
+# library for potentiometer
+import analogio
+
+### keyboard and button setup ##############################
+Keyboard = Keyboard(usb_hid.devices)
+Layout = KeyboardLayoutUS(Keyboard)
+
+btn1_pin = board.GP14
+
+btn1 = digitalio.DigitalInOut(btn1_pin)
+btn1.direction = digitalio.Direction.INPUT
+btn1.pull = digitalio.Pull.DOWN
+
+btn2_pin = board.GP15
+
+btn2 = digitalio.DigitalInOut(btn2_pin)
+btn2.direction = digitalio.Direction.INPUT
+btn2.pull = digitalio.Pull.DOWN
+
+### potentiometer setup ####################################
+pot = analogio.AnalogIn(board.GP26)
+
+def get_voltage(pin):
+    #return (pin.value * 3.3) / 65536
+    return (pin.value)/100
+
+### display setup ##########################################
+WIDTH = 128
+HEIGHT = 64
+CENTER_X = int(WIDTH/2)
+CENTER_Y = int(HEIGHT/2)
+
+displayio.release_displays()
+
+SDA = board.GP8
+SCL = board.GP9
+i2c = busio.I2C(SCL, SDA)
+
+if(i2c.try_lock()):
+    print("i2c.scan(): " + str(i2c.scan()))
+    i2c.unlock()
+print()
+
+display_bus = displayio.I2CDisplay(i2c, device_address=60)
+display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=WIDTH, height=HEIGHT)
+
+"""
+“displayio” drivers will also work with CircuitPython to display error messages
+and other output to the display when the user code is not using it.
+"""
+print("Raspberry Pi Pico/CircuitPython ")
+print("SSD1306 displayio (adafruit_displayio_ssd1306)")
+time.sleep(.5)
+
+#================================================
+"""
+bitmap1, palette = adafruit_imageload.load("/bitmaps/bitmapTest2.bmp",
+                                         bitmap=displayio.Bitmap,
+                                         palette=displayio.Palette)
+bitmap2, palette = adafruit_imageload.load("/bitmaps/cp_sprite_sheet.bmp",
+                                         bitmap=displayio.Bitmap,
+                                         palette=displayio.Palette)
+"""
+# 0:, 1:, 2:, 3:, 4:, 5:, 6:, 7:, 8:, 9:
+arrows, palette = adafruit_imageload.load("/bitmaps/arrows.bmp",
+                                         bitmap=displayio.Bitmap,
+                                         palette=displayio.Palette)
+
+# 0:, 1:, 2:, 3:, 4:, 5:, 6:, 7:, 8:, 9:
+logic1, palette = adafruit_imageload.load("/bitmaps/logicSymbols1.bmp",
+                                         bitmap=displayio.Bitmap,
+                                         palette=displayio.Palette)
+
+# 0:, 1:, 2:, 3:, 4:, 5:, 6:, 7:, 8:, 9:
+logic2, palette = adafruit_imageload.load("/bitmaps/logicSymbols2.bmp",
+                                         bitmap=displayio.Bitmap,
+                                         palette=displayio.Palette)
+
+# 0:, 1:, 2:, 3:, 4:, 5:, 6:, 7:, 8:, 9:
+mathOperators1, palette = adafruit_imageload.load("/bitmaps/mathCommonOperators1.bmp",
+                                         bitmap=displayio.Bitmap,
+                                         palette=displayio.Palette)
+
+# 0:, 1:, 2:, 3:, 4:, 5:, 6:, 7:, 8:, 9:
+mathSymbols1, palette = adafruit_imageload.load("/bitmaps/mathCommonSymbols1.bmp",
+                                         bitmap=displayio.Bitmap,
+                                         palette=displayio.Palette)
+
+# 0:, 1:, 2:, 3:, 4:, 5:, 6:, 7:, 8:, 9:
+mathSymbols2, palette = adafruit_imageload.load("/bitmaps/mathCommonSymbols2.bmp",
+                                         bitmap=displayio.Bitmap,
+                                         palette=displayio.Palette)
+
+# Create a TileGrid to hold the bitmap
+#tile_grid1 = displayio.TileGrid(bitmap1, pixel_shader=palette)
+#tile_grid2 = displayio.TileGrid(bitmap2, pixel_shader=palette)
+
+arrowsGrid = displayio.TileGrid(arrows, pixel_shader=palette)
+logicGrid1 = displayio.TileGrid(logic1, pixel_shader=palette)
+logicGrid2 = displayio.TileGrid(logic2, pixel_shader=palette)
+mOperatorGrid = displayio.TileGrid(mathOperators1, pixel_shader=palette)
+mSymbolGrid1 = displayio.TileGrid(mathSymbols1, pixel_shader=palette)
+mSymbolGrid2 = displayio.TileGrid(mathSymbols2, pixel_shader=palette)
+
+# Create a Group to hold the TileGrid
+group = displayio.Group(max_size=5)
+
+# Add the TileGrid to the Group
+#group.append(tile_grid2)
+group.append(arrowsGrid)
+
+# Add the Group to the Display
+display.show(group)
+print("hi!")
+# Loop forever so you can enjoy your image
+while True:
+    time.sleep(0.1)
+    if btn1.value:
+        #print("button 1 pressed")
+        Keyboard.press(Keycode.A)
+        time.sleep(0.1)
+        Keyboard.release(Keycode.A)
+        # change display to bitmap one
+        group.pop(0)
+        group.append(logicGrid1)
+        display.show(group)
+        #print((get_voltage(pot)))
+    if btn2.value:
+        #print("button 2 pressed")
+        #print((get_voltage(adc)),)
+        Keyboard.press(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, Keycode.KEYPAD_SIX)
+        time.sleep(0.1)
+        Keyboard.release(Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, Keycode.KEYPAD_SIX, Keycode.ALT)
+        
+        Keyboard.press(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, Keycode.KEYPAD_SIX)
+        time.sleep(0.1)
+        Keyboard.release(Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, Keycode.KEYPAD_SIX, Keycode.ALT)
+        
+        Keyboard.press(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, Keycode.KEYPAD_SIX)
+        time.sleep(0.1)
+        Keyboard.release(Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, Keycode.KEYPAD_SIX, Keycode.ALT)
+        
+        # change display to bitmap two
+        group.pop(0)
+        group.append(logicGrid2)
+        display.show(group)
+
