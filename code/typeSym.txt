@@ -1,0 +1,369 @@
+# importing necessary functions
+import time
+import usb_hid
+from adafruit_hid.keyboard import Keyboard
+from adafruit_hid.keycode import Keycode
+from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
+
+# setting up an HID keyboard
+Keyboard = Keyboard(usb_hid.devices)
+Layout = KeyboardLayoutUS(Keyboard)
+
+# the functions for typing special characters
+# test:
+def type_a():
+    Keyboard.press(Keycode.A)
+    time.sleep(0.1)
+    Keyboard.release(Keycode.A)
+
+# arrows
+def type_arrowLeft():
+    Keyboard.press(Keycode.A)
+    time.sleep(0.1)
+    Keyboard.release(Keycode.A)
+
+def type_arrowRight():
+    Keyboard.press(Keycode.A)
+    time.sleep(0.1)
+    Keyboard.release(Keycode.A)
+
+def type_arrowRightLeft():
+    Keyboard.press(Keycode.A)
+    time.sleep(0.1)
+    Keyboard.release(Keycode.A)
+
+def type_arrowUp():
+    Keyboard.press(Keycode.A)
+    time.sleep(0.1)
+    Keyboard.release(Keycode.A)
+
+def type_arrowDown():
+    Keyboard.press(Keycode.A)
+    time.sleep(0.1)
+    Keyboard.release(Keycode.A)
+
+def type_arrowUpDown():
+    Keyboard.press(Keycode.A)
+    time.sleep(0.1)
+    Keyboard.release(Keycode.A)
+
+def type_oneHalf():
+    Keyboard.press(Keycode.A)
+    time.sleep(0.1)
+    Keyboard.release(Keycode.A)
+
+def type_ae():
+    Keyboard.press(Keycode.A)
+    time.sleep(0.1)
+    Keyboard.release(Keycode.A)
+
+def type_degree():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_EIGHT)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_EIGHT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_EIGHT)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_EIGHT)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+def type_squared():
+    Keyboard.press(Keycode.A)
+    time.sleep(0.1)
+    Keyboard.release(Keycode.A)
+
+# logicSymbols1
+def type_thereExists():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_EIGHT)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_EIGHT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_ZERO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_ZERO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+def type_notThereExists():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_EIGHT)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_EIGHT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_ZERO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_ZERO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+"""
+def type_forAll():
+
+def type_not():
+
+def type_proves():
+
+def type_elementOf():
+
+def type_notElementOf():
+
+def type_logicalAnd():
+
+def type_logicalOR():
+
+# logicSymbols2
+def type_intersection():
+
+def type_union():
+
+def type_subset():
+
+def type_subsetOrEqual():
+"""
+def type_notSubset():
+    # this actually gives ¬
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_ONE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_ONE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_ZERO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_ZERO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+"""
+def type_integral():
+
+def type_therefore():
+
+def type_parallel():
+
+def type_notParallel():
+
+def type_perpendicular():
+"""
+# mathCommonOperators1
+def type_defineEqual():
+    # 240≡
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_FOUR)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_FOUR)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_ZERO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_ZERO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+# mathCommonSymbols1
+def type_infinity():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_SIX)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_SIX)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+def type_pi():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+def type_upperDelta():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_NINE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_NINE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_ONE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_ONE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_SIX)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_SIX)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+def type_lowerMu():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_ZERO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_ZERO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+def type_capitalOmega():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_FOUR)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_FOUR)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+def type_capitalSigma():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_EIGHT)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_EIGHT)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+def type_theta():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+def type_upperPhi():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+def type_lowerPhi():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_SEVEN)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
+
+# mathCommonSymbols2
+def type_lowerDelta():
+    Keyboard.press(Keycode.ALT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_TWO)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_THREE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.KEYPAD_FIVE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.KEYPAD_FIVE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ALT)
