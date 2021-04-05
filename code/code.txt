@@ -7,6 +7,7 @@ import displayio
 # import terminalio
 import adafruit_displayio_ssd1306
 import adafruit_imageload
+import math
 
 # libraries for USB HID
 import digitalio
@@ -18,19 +19,19 @@ from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 # custom library for typing special characters
 from typeSym import (type_a, type_pi, type_theta)
 """
-from typeSym import (type_a, type_arrowLeft, type_arrowRight, 
-                     type_arrowRightLeft, type_arrowUp, type_arrowDown, 
-                     type_arrowUpDown, type_oneHalf, type_ae, 
-                     type_degree, type_squared, type_thereExists, 
-                     type_notThereExists, type_forAll, type_not, 
-                     type_proves, type_elementOf, type_notElementOf, 
-                     type_logicalAnd, type_logicalOr, type_intersection, 
-                     type_union, type_subset, type_subsetOrEqual, 
-                     type_notSubset, type_integral, type_therefore, 
+from typeSym import (type_a, type_arrowLeft, type_arrowRight,
+                     type_arrowRightLeft, type_arrowUp, type_arrowDown,
+                     type_arrowUpDown, type_oneHalf, type_ae,
+                     type_degree, type_squared, type_thereExists,
+                     type_notThereExists, type_forAll, type_not,
+                     type_proves, type_elementOf, type_notElementOf,
+                     type_logicalAnd, type_logicalOr, type_intersection,
+                     type_union, type_subset, type_subsetOrEqual,
+                     type_notSubset, type_integral, type_therefore,
                      type_parallel, type_notParallel, type_perpendicular
-                     type_defineEqual, 
-                     type_infinity, type_pi, type_upperDelta, type_lowerMu, 
-                     type_capitalOmega, type_capitalSigma, type_theta, 
+                     type_defineEqual,
+                     type_infinity, type_pi, type_upperDelta, type_lowerMu,
+                     type_capitalOmega, type_capitalSigma, type_theta,
                      type_upperPhi, type_lowerPhi, type_lowerDelta)
 """
 # library for potentiometer
@@ -96,10 +97,14 @@ btn9.pull = digitalio.Pull.UP
 
 # potentiometer setup ####################################
 pot = analogio.AnalogIn(board.GP26)
+potPosition = 0
+previousPotPosition = 0
 
 def get_voltage(pin):
     # return (pin.value * 3.3) / 65536
     return (pin.value)/100
+
+potValue = get_voltage(pot)
 
 # character typing function setup ########################
 """
@@ -108,6 +113,7 @@ def type_a():
     time.sleep(0.1)Θ
     Keyboard.release(Keycode.A)
 """
+currentBitmap = 0
 
 # display setup ##########################################
 WIDTH = 128
@@ -147,8 +153,8 @@ bitmap2, palette = adafruit_imageload.load("/bitmaps/cp_sprite_sheet.bmp",
                                          palette=displayio.Palette)
 """
 # 0:, 1:, 2:, 3:, 4:, 5:, 6:, 7:, 8:, 9:
-arrows, palette = adafruit_imageload.load("/bitmaps/arrows.bmp", 
-                                          bitmap=displayio.Bitmap, 
+arrows, palette = adafruit_imageload.load("/bitmaps/arrows.bmp",
+                                          bitmap=displayio.Bitmap,
                                           palette=displayio.Palette)
 
 # 0:, 1:, 2:, 3:, 4:, 5:, 6:, 7:, 8:, 9:
@@ -183,7 +189,7 @@ mathSymbols2, palette = adafruit_imageload.load("/bitmaps/mathCommonSymbols2.bmp
 arrowsGrid = displayio.TileGrid(arrows, pixel_shader=palette)
 logicGrid1 = displayio.TileGrid(logic1, pixel_shader=palette)
 logicGrid2 = displayio.TileGrid(logic2, pixel_shader=palette)
-mOperatorGrid = displayio.TileGrid(mathOperators1, pixel_shader=palette)
+mOperatorGrid1 = displayio.TileGrid(mathOperators1, pixel_shader=palette)
 mSymbolGrid1 = displayio.TileGrid(mathSymbols1, pixel_shader=palette)
 mSymbolGrid2 = displayio.TileGrid(mathSymbols2, pixel_shader=palette)
 
@@ -191,7 +197,7 @@ mSymbolGrid2 = displayio.TileGrid(mathSymbols2, pixel_shader=palette)
 group = displayio.Group(max_size=5)
 
 # Add the TileGrid to the Group
-# group.append(tile_grid2)
+# group.append(tile_grid2) 
 group.append(arrowsGrid)
 
 # Add the Group to the Display
@@ -200,67 +206,219 @@ display.show(group)
 # Loop forever so you can enjoy your image
 while True:
     time.sleep(0.1)
-    if not btn0.value:
-        # type "aa"∞πcdegh
-        type_theta()
+    
+    # check potentiometer and update position
+    if math.fabs(get_voltage(pot) - potValue) > 10:
+        potValue = get_voltage(pot)
+        
+        if get_voltage(pot) > 538:
+            # set keyboard to _
+            potPosition = 6
+            
+            group.pop(0)
+            group.append(arrowsGrid)
+            display.show(group)
+            
+        elif get_voltage(pot) > 448:
+            # set keyboard to _
+            potPosition = 5
+            
+            group.pop(0)
+            group.append(logicGrid1)
+            display.show(group)
+            
+        elif get_voltage(pot) > 358:
+            # set keyboard to _
+            potPosition = 4
+            
+            group.pop(0)
+            group.append(logicGrid2)
+            display.show(group)
+            
+        elif get_voltage(pot) > 268:
+            # set keyboard to _
+            potPosition = 3
+            
+            group.pop(0)
+            group.append(mOperatorGrid1)
+            display.show(group)
+            
+        elif get_voltage(pot) > 178:
+            # set keyboard to _
+            potPosition = 2
+            
+            group.pop(0)
+            group.append(mSymbolGrid1)
+            display.show(group)
+            
+        elif get_voltage(pot) > 88:
+            # set keyboard to _
+            potPosition = 1
+            
+            group.pop(0)
+            group.append(mSymbolGrid2)
+            display.show(group)
+            
+        else:
+            # set keyboard to _
+            potPosition = 0
+            
+            group.pop(0)
+            group.append(arrowsGrid)
+            display.show(group)
+            
+# ----------------------------------------------------------
+    
+    if potPosition == 0:  
+        if not btn0.value:
+            # type "Θ"
+            type_theta()
 
-    if not btn1.value:
-        # type "a"
-        type_a()
-        # change display to bitmap one
-        group.pop(0)
-        group.append(logicGrid1)
-        display.show(group)
+        if not btn1.value:
+            # type "a"
+            type_a()
+            # change display to bitmap one
+            # group.pop(0)
+            # group.append(logicGrid1)
+            # display.show(group)
 
-    if not btn2.value:
-        # type "∞"
-        Keyboard.press(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, 
-                       Keycode.KEYPAD_SIX)
-        time.sleep(0.1)
-        Keyboard.release(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE, 
-                         Keycode.KEYPAD_SIX)
+        if not btn2.value:
+            # type "∞"
+            Keyboard.press(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE,
+                           Keycode.KEYPAD_SIX)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE,
+                             Keycode.KEYPAD_SIX)
 
-        # change display to bitmap two
-        group.pop(0)
-        group.append(logicGrid2)
-        display.show(group)
+            # change display to bitmap two
+            # group.pop(0)
+            # group.append(logicGrid2)
+            # display.show(group)
 
-    if not btn3.value:
-        # type "π"
-        type_pi()
+        if not btn3.value:
+            # type "π"
+            type_pi()
 
-    if not btn4.value:
-        # type "c"
-        Keyboard.press(Keycode.C)
-        time.sleep(0.1)
-        Keyboard.release(Keycode.C)
+        if not btn4.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
 
-    if not btn5.value:
-        # type "d"
-        Keyboard.press(Keycode.D)
-        time.sleep(0.1)
-        Keyboard.release(Keycode.D)
+        if not btn5.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
 
-    if not btn6.value:
-        # type "e"
-        Keyboard.press(Keycode.E)
-        time.sleep(0.1)
-        Keyboard.release(Keycode.E)
+        if not btn6.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
 
-    if not btn7.value:
-        # type "f"
-        Keyboard.press(Keycode.F)
-        time.sleep(0.1)
-        Keyboard.release(Keycode.F)
+        if not btn7.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
 
-    if not btn8.value:
-        # type "g"
-        Keyboard.press(Keycode.G)
-        time.sleep(0.1)
-        Keyboard.release(Keycode.G)
+        if not btn8.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
 
-    if not btn9.value:
-        # type "h"
-        Keyboard.press(Keycode.H)
-        time.sleep(0.1)
-        Keyboard.release(Keycode.H)
+        if not btn9.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+            
+    else:
+        if not btn0.value:
+            # type "π"
+            type_pi()
+
+        if not btn1.value:
+            # type "π"
+            type_pi()
+
+        if not btn2.value:
+            # type "π"
+            type_pi()
+
+        if not btn3.value:
+            # type "π"
+            type_pi()
+
+        if not btn4.value:
+            # type "π"
+            type_pi()
+
+        if not btn5.value:
+            # type "π"
+            type_pi()
+
+        if not btn6.value:
+            # type "π"
+            type_pi()
+
+        if not btn7.value:
+            # type "π"
+            type_pi()
+
+        if not btn8.value:
+            # type "π"
+            type_pi()
+
+        if not btn9.value:
+            # type "π"
+            type_pi()
+    
+    """
+    if potPosition != previousPotPosition:
+        
+        if get_voltage(pot) > 538:
+            group.pop(0)
+            group.append(arrows)
+            display.show(group)
+            
+        elif get_voltage(pot) > 448:
+            group.pop(0)
+            # group.append(logic1)
+            group.append(logicGrid1)
+            display.show(group)
+            
+        elif get_voltage(pot) > 358:
+            group.pop(0)
+            # group.append(logic2)
+            group.append(logicGrid1)
+            display.show(group)
+            
+        elif get_voltage(pot) > 268:
+            group.pop(0)
+            # group.append(mathOperators1)
+            group.append(logicGrid1)
+            display.show(group)
+            
+        elif get_voltage(pot) > 178:
+            
+            group.pop(0)
+            # group.append(mathSymbols1)
+            group.append(logicGrid1)
+            display.show(group)
+            
+        elif get_voltage(pot) > 88:
+            group.pop(0)
+            # group.append(mathSymbols2)
+            group.append(logicGrid1)
+            display.show(group)
+            
+        else:
+            group.pop(0)
+            group.append(arrows)
+            display.show(group)
+    
+    potPosition = previousPotPosition
+"""
