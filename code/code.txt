@@ -277,10 +277,6 @@ while True:
         if not btn1.value:
             # type "a"
             type_a()
-            # change display to bitmap one
-            # group.pop(0)
-            # group.append(logicGrid1)
-            # display.show(group)
 
         if not btn2.value:
             # type "∞"
@@ -289,11 +285,6 @@ while True:
             time.sleep(0.1)
             Keyboard.release(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE,
                              Keycode.KEYPAD_SIX)
-
-            # change display to bitmap two
-            # group.pop(0)
-            # group.append(logicGrid2)
-            # display.show(group)
 
         if not btn3.value:
             # type "π"
@@ -334,7 +325,387 @@ while True:
             Keyboard.press(Keycode.H)
             time.sleep(0.1)
             Keyboard.release(Keycode.H)
-            
+
+# ----------------------------------------------------------
+    
+    elif potPosition == 1:  
+        if not btn0.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
+
+        if not btn1.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
+
+        if not btn2.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
+
+        if not btn3.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
+
+        if not btn4.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
+
+        if not btn5.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
+
+        if not btn6.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
+
+        if not btn7.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
+
+        if not btn8.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
+
+        if not btn9.value:
+            # type "c"
+            Keyboard.press(Keycode.C)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.C)
+
+# ----------------------------------------------------------
+    
+    elif potPosition == 2:  
+        if not btn0.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
+
+        if not btn1.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
+
+        if not btn2.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
+
+        if not btn3.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
+
+        if not btn4.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
+
+        if not btn5.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
+
+        if not btn6.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
+
+        if not btn7.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
+
+        if not btn8.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
+
+        if not btn9.value:
+            # type "d"
+            Keyboard.press(Keycode.D)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.D)
+
+# ----------------------------------------------------------
+    
+    elif potPosition == 3:  
+        if not btn0.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
+
+        if not btn1.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
+
+        if not btn2.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
+
+        if not btn3.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
+
+        if not btn4.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
+
+        if not btn5.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
+
+        if not btn6.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
+
+        if not btn7.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
+
+        if not btn8.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
+
+        if not btn9.value:
+            # type "e"
+            Keyboard.press(Keycode.E)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.E)
+
+# ----------------------------------------------------------
+    
+    elif potPosition == 4:  
+        if not btn0.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
+
+        if not btn1.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
+
+        if not btn2.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
+
+        if not btn3.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
+
+        if not btn4.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
+
+        if not btn5.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
+
+        if not btn6.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
+
+        if not btn7.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
+
+        if not btn8.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
+
+        if not btn9.value:
+            # type "f"
+            Keyboard.press(Keycode.F)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.F)
+
+# ----------------------------------------------------------
+    
+    elif potPosition == 5:  
+        if not btn0.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
+
+        if not btn1.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
+
+        if not btn2.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
+
+        if not btn3.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
+
+        if not btn4.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
+
+        if not btn5.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
+
+        if not btn6.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
+
+        if not btn7.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
+
+        if not btn8.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
+
+        if not btn9.value:
+            # type "g"
+            Keyboard.press(Keycode.G)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.G)
+
+# ----------------------------------------------------------
+    
+    elif potPosition == 6:  
+        if not btn0.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+
+        if not btn1.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+
+        if not btn2.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+
+        if not btn3.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+
+        if not btn4.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+
+        if not btn5.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+
+        if not btn6.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+
+        if not btn7.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+
+        if not btn8.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+
+        if not btn9.value:
+            # type "h"
+            Keyboard.press(Keycode.H)
+            time.sleep(0.1)
+            Keyboard.release(Keycode.H)
+
+# ---------------------------------------------------            
+
     else:
         if not btn0.value:
             # type "π"
