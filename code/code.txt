@@ -13,11 +13,29 @@ import math
 import digitalio
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
-from adafruit_hid.keycode import Keycode
+# from adafruit_hid.keycode import Keycode
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 
 # custom library for typing special characters
-from typeSym import (type_a, type_pi, type_theta)
+from typeSym import (type_arrowUp, type_arrowDown, type_arrowUpDown
+                     , type_oneHalf, type_squared, type_arrowRight
+                     , type_arrowLeft, type_arrowRightLeft, type_ae
+                     , type_degree, type_lowerTao, type_lowerBeta
+                     , type_lowerSigma, type_lowerPhi, type_lowerDelta
+                     , type_thorn, type_infinity, type_pi
+                     , type_lowerMu, type_capitalOmega, type_capitalSigma
+                     , type_theta, type_upperPhi, type_lowerEpsilon
+                     , type_lowerAlpha, type_plusMinus, type_aproxEqual
+                     , type_greaterOrEqual, type_lesserOrEqual, type_implies
+                     , type_squareRoot, type_notEqual, type_oOperator
+                     , type_dotProduct, type_defineEqual, type_intersection
+                     , type_union, type_parallel, type_notParallel
+                     , type_perpendicular, type_not, type_proves
+                     , type_emptySet, type_bold, type_italic
+                     , type_pageBreak, type_pasteNoFormat, type_subscript
+                     , type_shortcutList, type_strikethrough, type_insertFootnote
+                     , type_insertComment, type_superscript, unicodeSearch)
+
 """
 from typeSym import (type_a, type_arrowLeft, type_arrowRight,
                      type_arrowRightLeft, type_arrowUp, type_arrowDown,
@@ -182,7 +200,12 @@ mathSymbols2, palette = adafruit_imageload.load("/bitmaps/mathCommonSymbols2.bmp
                                                 bitmap=displayio.Bitmap,
                                                 palette=displayio.Palette)
 
-# Create a TileGrid to hold the bitmap
+# 0:, 1:, 2:, 3:, 4:, 5:, 6:, 7:, 8:, 9:
+gDocShortcuts, palette = adafruit_imageload.load("/bitmaps/gDocShortcuts.bmp",
+                                                 bitmap=displayio.Bitmap,
+                                                 palette=displayio.Palette)
+
+# Create a TileGrid to hold the bitmap 
 # tile_grid1 = displayio.TileGrid(bitmap1, pixel_shader=palette)
 # tile_grid2 = displayio.TileGrid(bitmap2, pixel_shader=palette)
 
@@ -192,12 +215,13 @@ logicGrid2 = displayio.TileGrid(logic2, pixel_shader=palette)
 mOperatorGrid1 = displayio.TileGrid(mathOperators1, pixel_shader=palette)
 mSymbolGrid1 = displayio.TileGrid(mathSymbols1, pixel_shader=palette)
 mSymbolGrid2 = displayio.TileGrid(mathSymbols2, pixel_shader=palette)
+gDocShortGrid = displayio.TileGrid(gDocShortcuts, pixel_shader=palette)
 
 # Create a Group to hold the TileGrid
 group = displayio.Group(max_size=5)
 
 # Add the TileGrid to the Group
-# group.append(tile_grid2) 
+# group.append(tile_grid2)
 group.append(arrowsGrid)
 
 # Add the Group to the Display
@@ -206,505 +230,369 @@ display.show(group)
 # Loop forever so you can enjoy your image
 while True:
     time.sleep(0.1)
-    
+
     # check potentiometer and update position
     if math.fabs(get_voltage(pot) - potValue) > 10:
         potValue = get_voltage(pot)
-        
+
         if get_voltage(pot) > 538:
             # set keyboard to _
             potPosition = 6
-            
+
             group.pop(0)
-            group.append(arrowsGrid)
+            group.append(gDocShortGrid)
             display.show(group)
-            
+
         elif get_voltage(pot) > 448:
             # set keyboard to _
             potPosition = 5
-            
+
             group.pop(0)
             group.append(logicGrid1)
             display.show(group)
-            
+
         elif get_voltage(pot) > 358:
             # set keyboard to _
             potPosition = 4
-            
+
             group.pop(0)
             group.append(logicGrid2)
             display.show(group)
-            
+
         elif get_voltage(pot) > 268:
             # set keyboard to _
             potPosition = 3
-            
+
             group.pop(0)
             group.append(mOperatorGrid1)
             display.show(group)
-            
+
         elif get_voltage(pot) > 178:
             # set keyboard to _
             potPosition = 2
-            
+
             group.pop(0)
             group.append(mSymbolGrid1)
             display.show(group)
-            
+
         elif get_voltage(pot) > 88:
             # set keyboard to _
             potPosition = 1
-            
+
             group.pop(0)
             group.append(mSymbolGrid2)
             display.show(group)
-            
+
         else:
             # set keyboard to _
             potPosition = 0
-            
+
             group.pop(0)
             group.append(arrowsGrid)
             display.show(group)
-            
+
 # ----------------------------------------------------------
-    
-    if potPosition == 0:  
+
+    if potPosition == 0:
         if not btn0.value:
-            # type "Θ"
-            type_theta()
+            # type ""
+            type_arrowUp()
 
         if not btn1.value:
-            # type "a"
-            type_a()
+            # type ""
+            type_arrowDown()
 
         if not btn2.value:
             # type "∞"
-            Keyboard.press(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE,
-                           Keycode.KEYPAD_SIX)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.ALT, Keycode.KEYPAD_TWO, Keycode.KEYPAD_THREE,
-                             Keycode.KEYPAD_SIX)
+            type_arrowUpDown()
 
         if not btn3.value:
-            # type "π"
+            # type ""
+            type_oneHalf()
+
+        if not btn4.value:
+            # type ""
+            type_squared()
+
+        if not btn5.value:
+            # type ""
+            type_arrowRight()
+
+        if not btn6.value:
+            # type ""
+            type_arrowLeft()
+
+        if not btn7.value:
+            # type ""
+            type_arrowRightLeft()
+
+        if not btn8.value:
+            # type ""
+            type_ae()
+
+        if not btn9.value:
+            # type ""
+            type_degree()
+
+# ----------------------------------------------------------
+
+    elif potPosition == 1:
+        if not btn0.value:
+            # type ""
+            unicodeSearch()
+
+        if not btn1.value:
+            # type ""
+            type_lowerTao()
+
+        if not btn2.value:
+            # type ""
+            unicodeSearch()
+
+        if not btn3.value:
+            # type ""
+            unicodeSearch()
+
+        if not btn4.value:
+            # type ""
+            type_lowerBeta()
+
+        if not btn5.value:
+            # type ""
+            type_lowerSigma()
+
+        if not btn6.value:
+            # type ""
+            type_lowerPhi()
+
+        if not btn7.value:
+            # type ""
+            type_lowerDelta()
+
+        if not btn8.value:
+            # type ""
+            unicodeSearch()
+
+        if not btn9.value:
+            # type ""
+            type_thorn()
+
+# ----------------------------------------------------------
+
+    elif potPosition == 2:
+        if not btn0.value:
+            # type ""
+            type_infinity()
+
+        if not btn1.value:
+            # type ""
             type_pi()
 
-        if not btn4.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
-
-        if not btn5.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
-
-        if not btn6.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
-
-        if not btn7.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
-
-        if not btn8.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
-
-        if not btn9.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-# ----------------------------------------------------------
-    
-    elif potPosition == 1:  
-        if not btn0.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
-
-        if not btn1.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
-
         if not btn2.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
+            # type ""
+            unicodeSearch()
 
         if not btn3.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
+            # type ""
+            type_lowerMu()
 
         if not btn4.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
+            # type ""
+            type_capitalOmega()
 
         if not btn5.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
+            # type ""
+            type_capitalSigma()
 
         if not btn6.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
+            # type ""
+            type_theta()
 
         if not btn7.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
+            # type ""
+            type_upperPhi()
 
         if not btn8.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
+            # type ""
+            type_lowerEpsilon()
 
         if not btn9.value:
-            # type "c"
-            Keyboard.press(Keycode.C)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.C)
+            # type ""
+            type_lowerAlpha()
 
 # ----------------------------------------------------------
-    
-    elif potPosition == 2:  
+
+    elif potPosition == 3:
         if not btn0.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
+            # type ""
+            type_plusMinus()
 
         if not btn1.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
+            # type ""
+            type_aproxEqual()
 
         if not btn2.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
+            # type ""
+            type_greaterOrEqual()
 
         if not btn3.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
+            # type ""
+            type_lesserOrEqual()
 
         if not btn4.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
+            # type ""
+            type_implies()
 
         if not btn5.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
+            # type ""
+            type_squareRoot()
 
         if not btn6.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
+            # type ""
+            type_notEqual()
 
         if not btn7.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
+            # type ""
+            type_oOperator()
 
         if not btn8.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
+            # type ""
+            type_dotProduct()
 
         if not btn9.value:
-            # type "d"
-            Keyboard.press(Keycode.D)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.D)
+            # type ""
+            type_defineEqual()
 
 # ----------------------------------------------------------
-    
-    elif potPosition == 3:  
+
+    elif potPosition == 4:
         if not btn0.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
+            # type ""
+            type_intersection()
 
         if not btn1.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
+            # type ""
+            type_union()
 
         if not btn2.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
+            # type ""
+            unicodeSearch()
 
         if not btn3.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
+            # type ""
+            unicodeSearch()
 
         if not btn4.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
+            # type ""
+            unicodeSearch()
 
         if not btn5.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
+            # type ""
+            unicodeSearch()
 
         if not btn6.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
+            # type ""
+            unicodeSearch()
 
         if not btn7.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
+            # type ""
+            type_parallel()
 
         if not btn8.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
+            # type ""
+            type_notParallel()
 
         if not btn9.value:
-            # type "e"
-            Keyboard.press(Keycode.E)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.E)
+            # type ""
+            type_perpendicular()
 
 # ----------------------------------------------------------
-    
-    elif potPosition == 4:  
+
+    elif potPosition == 5:
         if not btn0.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
+            # type ""
+            unicodeSearch()
 
         if not btn1.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
+            # type ""
+            unicodeSearch()
 
         if not btn2.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
+            # type ""
+            unicodeSearch()
 
         if not btn3.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
+            # type ""
+            type_not()
 
         if not btn4.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
+            # type ""
+            type_proves()
 
         if not btn5.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
+            # type ""
+            unicodeSearch()
 
         if not btn6.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
+            # type ""
+            unicodeSearch()
 
         if not btn7.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
+            # type ""
+            unicodeSearch()
 
         if not btn8.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
+            # type ""
+            unicodeSearch()
 
         if not btn9.value:
-            # type "f"
-            Keyboard.press(Keycode.F)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.F)
+            # type ""
+            type_emptySet()
 
 # ----------------------------------------------------------
-    
-    elif potPosition == 5:  
+
+    elif potPosition == 6:
         if not btn0.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
+            # t
+            type_bold()
 
         if not btn1.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
+            # t
+            type_italic()
 
         if not btn2.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
+            # t
+            type_pageBreak()
 
         if not btn3.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
+            # t
+            type_pasteNoFormat()
 
         if not btn4.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
+            # t
+            type_subscript()
 
         if not btn5.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
+            # t
+            type_shortcutList()
 
         if not btn6.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
+            # t
+            type_strikethrough()
 
         if not btn7.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
+            # t
+            type_insertFootnote()
 
         if not btn8.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
+            # t
+            type_insertComment()
 
         if not btn9.value:
-            # type "g"
-            Keyboard.press(Keycode.G)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.G)
+            # t
+            type_superscript()
 
-# ----------------------------------------------------------
-    
-    elif potPosition == 6:  
-        if not btn0.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-        if not btn1.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-        if not btn2.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-        if not btn3.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-        if not btn4.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-        if not btn5.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-        if not btn6.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-        if not btn7.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-        if not btn8.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-        if not btn9.value:
-            # type "h"
-            Keyboard.press(Keycode.H)
-            time.sleep(0.1)
-            Keyboard.release(Keycode.H)
-
-# ---------------------------------------------------            
+# ---------------------------------------------------
 
     else:
         if not btn0.value:
@@ -746,50 +634,3 @@ while True:
         if not btn9.value:
             # type "π"
             type_pi()
-    
-    """
-    if potPosition != previousPotPosition:
-        
-        if get_voltage(pot) > 538:
-            group.pop(0)
-            group.append(arrows)
-            display.show(group)
-            
-        elif get_voltage(pot) > 448:
-            group.pop(0)
-            # group.append(logic1)
-            group.append(logicGrid1)
-            display.show(group)
-            
-        elif get_voltage(pot) > 358:
-            group.pop(0)
-            # group.append(logic2)
-            group.append(logicGrid1)
-            display.show(group)
-            
-        elif get_voltage(pot) > 268:
-            group.pop(0)
-            # group.append(mathOperators1)
-            group.append(logicGrid1)
-            display.show(group)
-            
-        elif get_voltage(pot) > 178:
-            
-            group.pop(0)
-            # group.append(mathSymbols1)
-            group.append(logicGrid1)
-            display.show(group)
-            
-        elif get_voltage(pot) > 88:
-            group.pop(0)
-            # group.append(mathSymbols2)
-            group.append(logicGrid1)
-            display.show(group)
-            
-        else:
-            group.pop(0)
-            group.append(arrows)
-            display.show(group)
-    
-    potPosition = previousPotPosition
-"""
