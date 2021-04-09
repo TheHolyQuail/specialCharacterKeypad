@@ -205,7 +205,7 @@ gDocShortcuts, palette = adafruit_imageload.load("/bitmaps/gDocShortcuts.bmp",
                                                  bitmap=displayio.Bitmap,
                                                  palette=displayio.Palette)
 
-# Create a TileGrid to hold the bitmap 
+# Create a TileGrid to hold the bitmap
 # tile_grid1 = displayio.TileGrid(bitmap1, pixel_shader=palette)
 # tile_grid2 = displayio.TileGrid(bitmap2, pixel_shader=palette)
 
@@ -295,43 +295,43 @@ while True:
 
     if potPosition == 0:
         if not btn0.value:
-            # type ""
+            # type "↑"
             type_arrowUp()
 
         if not btn1.value:
-            # type ""
+            # type "↓"
             type_arrowDown()
 
         if not btn2.value:
-            # type "∞"
+            # type "↕"
             type_arrowUpDown()
 
         if not btn3.value:
-            # type ""
+            # type "½"
             type_oneHalf()
 
         if not btn4.value:
-            # type ""
+            # type "²"
             type_squared()
 
         if not btn5.value:
-            # type ""
+            # type "→"
             type_arrowRight()
 
         if not btn6.value:
-            # type ""
+            # type "←"
             type_arrowLeft()
 
         if not btn7.value:
-            # type ""
+            # type "↔"
             type_arrowRightLeft()
 
         if not btn8.value:
-            # type ""
+            # type "æ"
             type_ae()
 
         if not btn9.value:
-            # type ""
+            # type "°"
             type_degree()
 
 # ----------------------------------------------------------
@@ -342,7 +342,7 @@ while True:
             unicodeSearch()
 
         if not btn1.value:
-            # type ""
+            # type "τ"
             type_lowerTao()
 
         if not btn2.value:
@@ -354,19 +354,19 @@ while True:
             unicodeSearch()
 
         if not btn4.value:
-            # type ""
+            # type "ß"
             type_lowerBeta()
 
         if not btn5.value:
-            # type ""
+            # type "σ"
             type_lowerSigma()
 
         if not btn6.value:
-            # type ""
+            # type "φ"
             type_lowerPhi()
 
         if not btn7.value:
-            # type ""
+            # type "δ"
             type_lowerDelta()
 
         if not btn8.value:
@@ -374,18 +374,18 @@ while True:
             unicodeSearch()
 
         if not btn9.value:
-            # type ""
+            # type "Þ"
             type_thorn()
 
 # ----------------------------------------------------------
 
     elif potPosition == 2:
         if not btn0.value:
-            # type ""
+            # type "∞"
             type_infinity()
 
         if not btn1.value:
-            # type ""
+            # type "π"
             type_pi()
 
         if not btn2.value:
@@ -393,85 +393,85 @@ while True:
             unicodeSearch()
 
         if not btn3.value:
-            # type ""
+            # type "µ"
             type_lowerMu()
 
         if not btn4.value:
-            # type ""
+            # type "Ω"
             type_capitalOmega()
 
         if not btn5.value:
-            # type ""
+            # type "Σ"
             type_capitalSigma()
 
         if not btn6.value:
-            # type ""
+            # type "Θ"
             type_theta()
 
         if not btn7.value:
-            # type ""
+            # type "Φ"
             type_upperPhi()
 
         if not btn8.value:
-            # type ""
+            # type "ε"
             type_lowerEpsilon()
 
         if not btn9.value:
-            # type ""
+            # type "α"
             type_lowerAlpha()
 
 # ----------------------------------------------------------
 
     elif potPosition == 3:
         if not btn0.value:
-            # type ""
+            # type "±"
             type_plusMinus()
 
         if not btn1.value:
-            # type ""
+            # type "≈"
             type_aproxEqual()
 
         if not btn2.value:
-            # type ""
+            # type "≥"
             type_greaterOrEqual()
 
         if not btn3.value:
-            # type ""
+            # type "≤"
             type_lesserOrEqual()
 
         if not btn4.value:
-            # type ""
+            # type "═>"
             type_implies()
 
         if not btn5.value:
-            # type ""
+            # type "√("
             type_squareRoot()
 
         if not btn6.value:
-            # type ""
+            # type "!="
             type_notEqual()
 
         if not btn7.value:
-            # type ""
+            # type "○"
             type_oOperator()
 
         if not btn8.value:
-            # type ""
+            # type "•"
             type_dotProduct()
 
         if not btn9.value:
-            # type ""
+            # type "≡"
             type_defineEqual()
 
 # ----------------------------------------------------------
 
     elif potPosition == 4:
         if not btn0.value:
-            # type ""
+            # type "∩"
             type_intersection()
 
         if not btn1.value:
-            # type ""
+            # type "U"
             type_union()
 
         if not btn2.value:
@@ -495,15 +495,15 @@ while True:
             unicodeSearch()
 
         if not btn7.value:
-            # type ""
+            # type "||"
             type_parallel()
 
         if not btn8.value:
-            # type ""
+            # type "╫"
             type_notParallel()
 
         if not btn9.value:
-            # type ""
+            # type "┴"
             type_perpendicular()
 
 # ----------------------------------------------------------
@@ -522,11 +522,11 @@ while True:
             unicodeSearch()
 
         if not btn3.value:
-            # type ""
+            # type "¬"
             type_not()
 
         if not btn4.value:
-            # type ""
+            # type "├"
             type_proves()
 
         if not btn5.value:
@@ -546,18 +546,18 @@ while True:
             unicodeSearch()
 
         if not btn9.value:
-            # type ""
+            # type "Ø"
             type_emptySet()
 
 # ----------------------------------------------------------
 
     elif potPosition == 6:
         if not btn0.value:
-            # t
+            # ctrl+b
             type_bold()
 
         if not btn1.value:
-            # t
+            # ctrl+i
             type_italic()
 
         if not btn2.value:
