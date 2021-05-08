@@ -34,24 +34,12 @@ from typeSym import (type_arrowUp, type_arrowDown, type_arrowUpDown
                      , type_emptySet, type_bold, type_italic
                      , type_pageBreak, type_pasteNoFormat, type_subscript
                      , type_shortcutList, type_strikethrough, type_insertFootnote
-                     , type_insertComment, type_superscript, unicodeSearch)
+                     , type_insertComment, type_superscript, unicodeSearch
+                     , openPowershell, openSnipSketch, type_parentheses
+                     , type_curllyBrackets, type_squareBrackets, type_doubleQuotes
+                     , type_singleQuotes, type_commaSpace, unTab, commentCode)
 
-"""
-from typeSym import (type_a, type_arrowLeft, type_arrowRight,
-                     type_arrowRightLeft, type_arrowUp, type_arrowDown,
-                     type_arrowUpDown, type_oneHalf, type_ae,
-                     type_degree, type_squared, type_thereExists,
-                     type_notThereExists, type_forAll, type_not,
-                     type_proves, type_elementOf, type_notElementOf,
-                     type_logicalAnd, type_logicalOr, type_intersection,
-                     type_union, type_subset, type_subsetOrEqual,
-                     type_notSubset, type_integral, type_therefore,
-                     type_parallel, type_notParallel, type_perpendicular
-                     type_defineEqual,
-                     type_infinity, type_pi, type_upperDelta, type_lowerMu,
-                     type_capitalOmega, type_capitalSigma, type_theta,
-                     type_upperPhi, type_lowerPhi, type_lowerDelta)
-"""
+
 # library for potentiometer
 import analogio
 
@@ -159,14 +147,11 @@ and other output to the display when the user code is not using it.
 """
 print("Raspberry Pi Pico/CircuitPython ")
 print("SSD1306 displayio (adafruit_displayio_ssd1306)")
-time.sleep(.5)
+time.sleep(.1)
 
 # ================================================
 """
 bitmap1, palette = adafruit_imageload.load("/bitmaps/bitmapTest2.bmp",
-                                         bitmap=displayio.Bitmap,
-                                         palette=displayio.Palette)
-bitmap2, palette = adafruit_imageload.load("/bitmaps/cp_sprite_sheet.bmp",
                                          bitmap=displayio.Bitmap,
                                          palette=displayio.Palette)
 """
@@ -205,9 +190,13 @@ gDocShortcuts, palette = adafruit_imageload.load("/bitmaps/gDocShortcuts.bmp",
                                                  bitmap=displayio.Bitmap,
                                                  palette=displayio.Palette)
 
-# Create a TileGrid to hold the bitmap
+# 0:, 1:, 2:, 3:, 4:, 5:, 6:, 7:, 8:, 9:
+code1, palette = adafruit_imageload.load("/bitmaps/code1.bmp",
+                                                 bitmap=displayio.Bitmap,
+                                                 palette=displayio.Palette)
+
+# Create TileGrids to hold the bitmaps
 # tile_grid1 = displayio.TileGrid(bitmap1, pixel_shader=palette)
-# tile_grid2 = displayio.TileGrid(bitmap2, pixel_shader=palette)
 
 arrowsGrid = displayio.TileGrid(arrows, pixel_shader=palette)
 logicGrid1 = displayio.TileGrid(logic1, pixel_shader=palette)
@@ -216,8 +205,9 @@ mOperatorGrid1 = displayio.TileGrid(mathOperators1, pixel_shader=palette)
 mSymbolGrid1 = displayio.TileGrid(mathSymbols1, pixel_shader=palette)
 mSymbolGrid2 = displayio.TileGrid(mathSymbols2, pixel_shader=palette)
 gDocShortGrid = displayio.TileGrid(gDocShortcuts, pixel_shader=palette)
+codeGrid1 = displayio.TileGrid(code1, pixel_shader=palette)
 
-# Create a Group to hold the TileGrid
+# Create a Group to hold the TileGrids
 group = displayio.Group(max_size=5)
 
 # Add the TileGrid to the Group
@@ -231,12 +221,20 @@ display.show(group)
 while True:
     time.sleep(0.1)
 
-    # check potentiometer and update position
+    # check potentiometer and update position (potentiometer values range from ~10 to ~640)
     if math.fabs(get_voltage(pot) - potValue) > 10:
         potValue = get_voltage(pot)
 
-        if get_voltage(pot) > 538:
-            # set keyboard to _
+        if get_voltage(pot) > 608:
+            # set keyboard to code1
+            potPosition = 7
+
+            group.pop(0)
+            group.append(codeGrid1)
+            display.show(group)
+            
+        elif get_voltage(pot) > 538:
+            # set keyboard to google doc shortcuts
             potPosition = 6
 
             group.pop(0)
@@ -244,7 +242,7 @@ while True:
             display.show(group)
 
         elif get_voltage(pot) > 448:
-            # set keyboard to _
+            # set keyboard to logic symbols 1
             potPosition = 5
 
             group.pop(0)
@@ -252,7 +250,7 @@ while True:
             display.show(group)
 
         elif get_voltage(pot) > 358:
-            # set keyboard to _
+            # set keyboard to logic symbols 2
             potPosition = 4
 
             group.pop(0)
@@ -260,7 +258,7 @@ while True:
             display.show(group)
 
         elif get_voltage(pot) > 268:
-            # set keyboard to _
+            # set keyboard to math operators 1
             potPosition = 3
 
             group.pop(0)
@@ -268,7 +266,7 @@ while True:
             display.show(group)
 
         elif get_voltage(pot) > 178:
-            # set keyboard to _
+            # set keyboard to math symbols 1
             potPosition = 2
 
             group.pop(0)
@@ -276,7 +274,7 @@ while True:
             display.show(group)
 
         elif get_voltage(pot) > 88:
-            # set keyboard to _
+            # set keyboard to math symbols 2
             potPosition = 1
 
             group.pop(0)
@@ -284,7 +282,7 @@ while True:
             display.show(group)
 
         else:
-            # set keyboard to _
+            # set keyboard to arrows and exponents
             potPosition = 0
 
             group.pop(0)
@@ -591,6 +589,49 @@ while True:
         if not btn9.value:
             # t
             type_superscript()
+
+# ----------------------------------------------------------
+
+    elif potPosition == 7:
+        if not btn0.value:
+            # type parentheses and back arrow into them.
+            type_parentheses()
+
+        if not btn1.value:
+            # type curlly brackets and back arrow into them.
+            type_curllyBrackets()
+
+        if not btn2.value:
+            # type square brackets and back arrow into them.
+            type_squareBrackets()
+
+        if not btn3.value:
+            # type double quotes and back arrow into them.
+            type_doubleQuotes()
+
+        if not btn4.value:
+            # type single quotes and back arrow into them.
+            type_singleQuotes()
+
+        if not btn5.value:
+            # type a comma follwed with a space
+            type_commaSpace()
+
+        if not btn6.value:
+            # un-tab shortcut
+            unTab()
+
+        if not btn7.value:
+            # comment code shortcut
+            commentCode()
+
+        if not btn8.value:
+            # open power shell application
+            openPowershell()
+
+        if not btn9.value:
+            # open snip and sketch application
+            openSnipSketch()
 
 # ---------------------------------------------------
 

@@ -952,3 +952,166 @@ def type_shortcutList():
     Keyboard.release(Keycode.FORWARD_SLASH)
     time.sleep(0.02)
     Keyboard.release(Keycode.CONTROL)
+    
+
+# code shortcuts 1
+def type_parentheses():
+    # type parentheses and back arrow into them
+    Keyboard.press(Keycode.SHIFT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.NINE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.NINE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.ZERO)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ZERO)
+    Keyboard.release(Keycode.SHIFT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.LEFT_ARROW)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.LEFT_ARROW)
+
+def type_curllyBrackets():
+    # type curlly brackets and back arrow into them
+    Keyboard.press(Keycode.SHIFT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.LEFT_BRACKET)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.LEFT_BRACKET)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.RIGHT_BRACKET)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.RIGHT_BRACKET)
+    Keyboard.release(Keycode.SHIFT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.LEFT_ARROW)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.LEFT_ARROW)
+
+def type_squareBrackets():
+    # type squre brackets and back arrow into them
+    Keyboard.press(Keycode.LEFT_BRACKET)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.LEFT_BRACKET)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.RIGHT_BRACKET)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.RIGHT_BRACKET)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.LEFT_ARROW)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.LEFT_ARROW)
+
+def type_doubleQuotes():
+    # type double quotes and back arrow into them
+    Keyboard.press(Keycode.SHIFT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.QUOTE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.QUOTE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.QUOTE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.QUOTE)
+    Keyboard.release(Keycode.SHIFT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.LEFT_ARROW)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.LEFT_ARROW)
+
+def type_singleQuotes():
+    # type single quotes and back arrow into them
+    Keyboard.press(Keycode.QUOTE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.QUOTE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.QUOTE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.QUOTE)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.LEFT_ARROW)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.LEFT_ARROW)
+
+def type_commaSpace():
+    # type a comma follwed by a space
+    Keyboard.press(Keycode.COMMA)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.COMMA)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.SPACE)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.SPACE)
+
+def unTab():
+    # shortcut to delete tab spaces on multiple lines
+    Keyboard.press(Keycode.SHIFT)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.TAB)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.TAB)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.SHIFT)
+
+def commentCode():
+    # shortcut ot comment code in most IDEs
+    # ctrl+/
+    Keyboard.press(Keycode.CONTROL)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.FORWARD_SLASH)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.FORWARD_SLASH)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.CONTROL)
+
+def openPowershell():
+    # open powershell
+    Keyboard.press(Keycode.WINDOWS, Keycode.R)
+    time.sleep(0.04)
+    Keyboard.release(Keycode.WINDOWS, Keycode.R)
+    time.sleep(0.02)
+    # type "powershell"
+    Keyboard.press(Keycode.P)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.P)
+    Keyboard.press(Keycode.O)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.O)
+    Keyboard.press(Keycode.W)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.W)
+    Keyboard.press(Keycode.E)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.E)
+    Keyboard.press(Keycode.R)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.R)
+    Keyboard.press(Keycode.S)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.S)
+    Keyboard.press(Keycode.H)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.H)
+    Keyboard.press(Keycode.E)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.E)
+    Keyboard.press(Keycode.L)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.L)
+    Keyboard.press(Keycode.L)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.L)
+    time.sleep(0.02)
+    Keyboard.press(Keycode.ENTER)
+    time.sleep(0.02)
+    Keyboard.release(Keycode.ENTER)
+    time.sleep(0.02)
+    
+def openSnipSketch():
+    # open snip and sketch
+    Keyboard.press(Keycode.WINDOWS, Keycode.SHIFT, Keycode.S)
+    time.sleep(0.04)
+    Keyboard.release(Keycode.WINDOWS, Keycode.SHIFT, Keycode.S)
+    time.sleep(0.02)
+    
