@@ -6,3 +6,4 @@ The keypad CAD and ECAD were designed in Fusion 360 and the RP2040 is programed 
 
 The custom code is split into two files code.py which contains the loop and keyboard state control and typeSym.py which houses the functions used to send keystrokes to the host computer.
 
+More a more detailed descriptions and assembly/programming instructions are availible on maker.io (link: )
